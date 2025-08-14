@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 1,
+    "phrase": "react tutorials",
+    "currentPosition": 3,
+    "previousPosition": 5,
+    "searchVolume": 8900,
+    "url": "https://example.com/react-tutorials",
+    "lastUpdated": "2024-01-15"
+  },
+  {
+    "Id": 2,
+    "phrase": "javascript frameworks",
+    "currentPosition": 7,
+    "previousPosition": 8,
+    "searchVolume": 12400,
+    "url": "https://example.com/js-frameworks",
+    "lastUpdated": "2024-01-15"
+  },
+  {
+    "Id": 3,
+    "phrase": "web development guide",
+    "currentPosition": 12,
+    "previousPosition": 10,
+    "searchVolume": 5600,
+    "url": "https://example.com/web-dev-guide",
+    "lastUpdated": "2024-01-15"
+  },
+  {
+    "Id": 4,
+    "phrase": "responsive design",
+    "currentPosition": 4,
+    "previousPosition": 6,
+    "searchVolume": 7200,
+    "url": "https://example.com/responsive-design",
+    "lastUpdated": "2024-01-15"
+  },
+  {
+    "Id": 5,
+    "phrase": "css grid layout",
+    "currentPosition": 2,
+    "previousPosition": 3,
+    "searchVolume": 4100,
+    "url": "https://example.com/css-grid",
+    "lastUpdated": "2024-01-15"
+  },
+  {
+    "Id": 6,
+    "phrase": "node.js tutorial",
+    "currentPosition": 15,
+    "previousPosition": 12,
+    "searchVolume": 9800,
+    "url": "https://example.com/nodejs-tutorial",
+    "lastUpdated": "2024-01-15"
+  },
+  {
+    "Id": 7,
+    "phrase": "tailwind css components",
+    "currentPosition": 6,
+    "previousPosition": 7,
+    "searchVolume": 3400,
+    "url": "https://example.com/tailwind-components",
+    "lastUpdated": "2024-01-15"
+  },
+  {
+    "Id": 8,
+    "phrase": "typescript best practices",
+    "currentPosition": 9,
+    "previousPosition": 11,
+    "searchVolume": 2900,
+    "url": "https://example.com/typescript-practices",
+    "lastUpdated": "2024-01-15"
+  }
+]

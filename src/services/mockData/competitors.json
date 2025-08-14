@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "domain": "techcrunch.com",
+    "commonKeywords": 67,
+    "visibilityScore": 89
+  },
+  {
+    "Id": 2,
+    "domain": "medium.com",
+    "commonKeywords": 45,
+    "visibilityScore": 76
+  },
+  {
+    "Id": 3,
+    "domain": "stackoverflow.com",
+    "commonKeywords": 23,
+    "visibilityScore": 94
+  },
+  {
+    "Id": 4,
+    "domain": "dev.to",
+    "commonKeywords": 34,
+    "visibilityScore": 68
+  },
+  {
+    "Id": 5,
+    "domain": "freecodecamp.org",
+    "commonKeywords": 56,
+    "visibilityScore": 82
+  },
+  {
+    "Id": 6,
+    "domain": "css-tricks.com",
+    "commonKeywords": 28,
+    "visibilityScore": 71
+  },
+  {
+    "Id": 7,
+    "domain": "smashingmagazine.com",
+    "commonKeywords": 41,
+    "visibilityScore": 79
+  }
+]

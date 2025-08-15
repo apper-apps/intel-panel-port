@@ -30,6 +30,34 @@ const KeywordTable = ({ keywords, onDeleteKeyword }) => {
       : bValue - aValue;
   });
 
+const formatSearchVolume = (volume) => {
+    if (volume >= 1000000) {
+      return (volume / 1000000).toFixed(1).replace('.0', '') + 'M';
+    }
+    if (volume >= 1000) {
+      return (volume / 1000).toFixed(1).replace('.0', '') + 'K';
+    }
+    return volume.toString();
+  };
+
+  const getDifficultyBadge = (difficulty) => {
+    let colorClass = '';
+    let label = '';
+    
+    if (difficulty <= 33) {
+      colorClass = 'bg-success-500/20 text-success-400';
+      label = 'Easy';
+    } else if (difficulty <= 66) {
+      colorClass = 'bg-yellow-500/20 text-yellow-400';
+      label = 'Medium';
+    } else {
+      colorClass = 'bg-red-500/20 text-red-400';
+      label = 'Hard';
+    }
+    
+    return { colorClass, label };
+  };
+
   const getPositionChange = (current, previous) => {
     if (!previous) return { change: 0, type: "neutral" };
     const change = previous - current; // Positive means improvement
@@ -55,7 +83,7 @@ const KeywordTable = ({ keywords, onDeleteKeyword }) => {
     }
   };
 
-  const SortHeader = ({ label, sortKey }) => (
+const SortHeader = ({ label, sortKey }) => (
     <th 
       className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider cursor-pointer hover:text-white transition-colors group"
       onClick={() => handleSort(sortKey)}
@@ -81,7 +109,7 @@ const KeywordTable = ({ keywords, onDeleteKeyword }) => {
   return (
     <div className="glass-effect rounded-xl overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-slate-700">
+<table className="min-w-full divide-y divide-slate-700">
           <thead className="bg-slate-800/50">
             <tr>
               <SortHeader label="Keyword" sortKey="phrase" />
@@ -89,6 +117,7 @@ const KeywordTable = ({ keywords, onDeleteKeyword }) => {
               <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                 Change
               </th>
+              <SortHeader label="Difficulty" sortKey="difficulty" />
               <SortHeader label="Search Volume" sortKey="searchVolume" />
               <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                 URL
@@ -98,9 +127,10 @@ const KeywordTable = ({ keywords, onDeleteKeyword }) => {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-700">
+<tbody className="divide-y divide-slate-700">
             {sortedKeywords.map((keyword) => {
               const positionChange = getPositionChange(keyword.currentPosition, keyword.previousPosition);
+              const difficulty = getDifficultyBadge(keyword.difficulty);
               return (
                 <tr key={keyword.Id} className="table-row hover:bg-slate-800/30">
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -132,8 +162,18 @@ const KeywordTable = ({ keywords, onDeleteKeyword }) => {
                     )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center gap-2">
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${difficulty.colorClass}`}>
+                        {difficulty.label}
+                      </span>
+                      <span className="text-xs text-slate-400">
+                        {keyword.difficulty}/100
+                      </span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
                     <span className="text-sm text-slate-300">
-                      {keyword.searchVolume.toLocaleString()}/mo
+                      {formatSearchVolume(keyword.searchVolume)}/mo
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">

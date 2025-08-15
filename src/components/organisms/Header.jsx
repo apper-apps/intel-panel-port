@@ -1,4 +1,5 @@
 import { useState } from "react";
+import domainService from "@/services/api/domainService";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 
@@ -26,11 +27,21 @@ const Header = ({ title, onMenuClick }) => {
             <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
             <span className="text-sm text-slate-300">Live data</span>
           </div>
-          
-          <Button variant="outline" size="sm" className="hidden sm:flex">
-            <ApperIcon name="RefreshCw" size={16} className="mr-2" />
-            Sync
-          </Button>
+<div className="flex items-center gap-3">
+            {domainService.getCurrentDomain() && (
+              <div className="flex items-center gap-2 px-3 py-1 bg-primary-500/10 border border-primary-500/20 rounded-lg">
+                <ApperIcon name="Globe" size={14} className="text-primary-400" />
+                <span className="text-sm font-medium text-primary-300">
+                  {domainService.getCurrentDomain()}
+                </span>
+              </div>
+            )}
+            
+            <Button variant="outline" size="sm" className="hidden sm:flex">
+              <ApperIcon name="RefreshCw" size={16} className="mr-2" />
+              Sync
+            </Button>
+          </div>
         </div>
       </div>
     </header>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
+import { format } from "date-fns";
 
 const KeywordTable = ({ keywords, onDeleteKeyword }) => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
@@ -110,7 +111,7 @@ const SortHeader = ({ label, sortKey }) => (
     <div className="glass-effect rounded-xl overflow-hidden">
       <div className="overflow-x-auto">
 <table className="min-w-full divide-y divide-slate-700">
-          <thead className="bg-slate-800/50">
+<thead className="bg-slate-800/50">
             <tr>
               <SortHeader label="Keyword" sortKey="phrase" />
               <SortHeader label="Position" sortKey="currentPosition" />
@@ -121,6 +122,9 @@ const SortHeader = ({ label, sortKey }) => (
               <SortHeader label="Search Volume" sortKey="searchVolume" />
               <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                 URL
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
+                Last Updated
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                 Actions
@@ -151,11 +155,13 @@ const SortHeader = ({ label, sortKey }) => (
                       </span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+<td className="px-6 py-4 whitespace-nowrap">
                     {positionChange.change > 0 ? (
                       <div className={`flex items-center gap-1 ${getPositionChangeColor(positionChange.type)}`}>
                         <ApperIcon name={getPositionChangeIcon(positionChange.type)} size={14} />
-                        <span className="text-sm font-medium">{positionChange.change}</span>
+                        <span className="text-sm font-medium">
+                          {positionChange.type === "positive" ? "+" : "-"}{positionChange.change}
+                        </span>
                       </div>
                     ) : (
                       <span className="text-slate-500 text-sm">-</span>
@@ -179,6 +185,11 @@ const SortHeader = ({ label, sortKey }) => (
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className="text-sm text-slate-400 truncate max-w-xs block" title={keyword.url}>
                       {keyword.url}
+                    </span>
+                  </td>
+<td className="px-6 py-4 whitespace-nowrap">
+                    <span className="text-sm text-slate-400">
+                      {keyword.lastUpdated ? format(new Date(keyword.lastUpdated), 'MMM d, yyyy') : '-'}
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
